@@ -27,7 +27,7 @@ Vision Transformers rely on fixed patch tokens that ignore the spatial and seman
 
 ## $\partial\text{HT}$: Differentiable Hierarchical Visual Tokenization
 
-** 🚧 NOTE: The repo is still under construction, but will be finalized soon. 🚧 ***
+**🚧 NOTE: The repo is still under construction, but will be finalized soon. 🚧***
 
 This repo contains code and weights for **Differentiable Hierarchical Visual Tokenization**, accepted for NeurIPS 2025.
 
