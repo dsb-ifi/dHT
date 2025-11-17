@@ -11,10 +11,9 @@
 <br>
 
 [![Website](https://img.shields.io/badge/Website-green)](https://dsb-ifi.github.io/dHT/)
-[![PaperArxiv](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2507.01654)
-[![PaperNeurIPS](https://img.shields.io/badge/Paper-NeurIPS_2025-blue)](https://eclr-workshop.github.io/)
-[![SpotlightNeurIPS](https://img.shields.io/badge/Spotlight-NeurIPS_2025-cyan)](https://neurips.cc/virtual/2025/poster/115180)
-[![NotebookExample](https://img.shields.io/badge/Notebook-Example-orange)](https://nbviewer.jupyter.org) <br>
+[![PaperArxiv](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2511.02652)
+[![PaperNeurIPS](https://img.shields.io/badge/Paper-NeurIPS_2025-blue)](https://openreview.net/forum?id=y8VWYf5cVI)
+[![SpotlightNeurIPS](https://img.shields.io/badge/Spotlight-NeurIPS_2025-cyan)](https://neurips.cc/virtual/2025/poster/115180)<br>
 
 ![dHT Figure 1](/assets/dht_teaser_transparent.png#gh-light-mode-only "Examples of feature trajectoreis with SPoT-ON")
 ![dHT Figure 1](/assets/dht_teaser_transparent_dark.png#gh-dark-mode-only "Examples of feature trajectoreis with SPoT-ON")
@@ -27,6 +26,8 @@ Vision Transformers rely on fixed patch tokens that ignore the spatial and seman
 
 
 ## $\partial\text{HT}$: Differentiable Hierarchical Visual Tokenization
+
+** 🚧 NOTE: The repo is still under construction, but will be finalized soon. 🚧 ***
 
 This repo contains code and weights for **Differentiable Hierarchical Visual Tokenization**, accepted for NeurIPS 2025.
 
@@ -59,9 +60,6 @@ model = torch.hub.load(
 
 This will load the model and downloaded the pretrained weights, stored in your local `torch.hub` directory. 
 
-## More Examples
-
-We provide a [Jupyter notebook](https://nbviewer.jupyter.org/) as a sandbox for loading, evaluating, and extracting token placements for the models. 
 
 ## Citation
 
