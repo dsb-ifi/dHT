@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
   push:
     branches:
-      - "gh-pages"
+      - gh-pages
 
 permissions:
   contents: read
@@ -18,15 +18,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    # fix, ensure all run steps happen in repo root
     defaults:
       run:
-        working-directory: ${{ github.workspace }}
-        shell: bash
+        working-directory: .
 
     steps:
-      - name: Checkout project-template
+      - name: Checkout template
         uses: actions/checkout@v4
         with:
           repository: dsb-ifi/project-template
@@ -38,13 +35,10 @@ jobs:
         with:
           path: contents
 
-      - name: Merge template and contents (including hidden)
+      - name: Merge template and contents safely
         run: |
-          shopt -s dotglob
-          mv template/* . || true
-          mv template/.[!.]* . || true
-          mv contents/* . || true
-          mv contents/.[!.]* . || true
+          rsync -av template/ ./ 
+          rsync -av contents/ ./
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
