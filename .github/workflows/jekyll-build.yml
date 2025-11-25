@@ -1,77 +1,58 @@
 name: Deploy Jekyll with GitHub Pages
 
 on:
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch: {}
+  # Runs on pushes targeting the gh-pages branch
   push:
-    branches:
-      - gh-pages
+    branches: 
+      - "gh-pages"
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
+  # Build job
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # --- 1. Checkout TEMPLATE ---
       - name: Checkout project-template
         uses: actions/checkout@v4
+
+      - name: Prepare Ruby and Jekyll
+        uses: ruby/setup-ruby@v1
         with:
-          repository: dsb-ifi/project-template
-          ref: main
-          path: template
-          clean: false
-          fetch-depth: 1
-
-      # --- 2. Checkout CONTENT ---
-      - name: Checkout content
-        uses: actions/checkout@v4
-        with:
-          path: contents
-          clean: false
-          fetch-depth: 1
-
-      # --- 3. Remove nested .git folders so rsync works ---
-      - name: Remove git directories before merge
-        run: |
-          rm -rf template/.git
-          rm -rf contents/.git
-
-      # --- 4. Merge template → root, then contents → root ---
-      - name: Merge template and contents
-        run: |
-          rsync -av template/ ./
-          rsync -av contents/ ./
-
-      # --- 5. Setup Pages build ---
+          ruby-version: '3.4'
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
 
-      # --- 6. Jekyll build ---
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
 
-      # --- 7. Upload artifact ---
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
 
+  # Deployment job
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
     runs-on: ubuntu-latest
-
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
