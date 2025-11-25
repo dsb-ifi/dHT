@@ -31,7 +31,7 @@ affiliations:
   - name: ML, UiT The Arctic University of Norway
     link: https://machine-learning.uit.no/
 paper: https://arxiv.org/abs/2511.02652
-# video: https://www.youtube.com/@UniOslo
+video: https://recorder-v3.slideslive.com/?share=104530&s=2ab046b2-a541-4902-9db1-758e5c516633
 code: https://github.com/dsb-ifi/dHT
 # data: https://huggingface.co/docs/
 
