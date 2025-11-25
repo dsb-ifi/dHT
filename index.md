@@ -42,6 +42,7 @@ abstract: Vision Transformers rely on fixed patch tokens that ignore the spatial
 ![dHT Figure 1](figures/teaser_standalone.png "Token granularity comparison")
 **Figure 1**: *Comparing spatial granularity in visual tokenizers. $\partial\text{HT}$ (right) provides an end-to-end learnable framework for multi-scale tokenization.*
 
+---
 
 Transformers have become the de facto architecture for all but a few data modalities.
 The architecture is, however, contingent on the process of *tokenization*. 
@@ -72,6 +73,7 @@ $\partial\text{HT}$ is not another ViT variant, but a fully modular tokenizer th
 ![dHT Figure 2](figures/diagram_standalone.png "Tokenizer Pipeline")
 **Figure 2**: *Illustration of the $\partial\text{HT}$ tokenization and feature extraction pipeline. From an input image we produce a hierarchy of superpixel representations. An optimal segmentation is then selected from the hierarchy using information criteria, and features are extracted for each superpixel.*
 
+---
 
 $\partial\text{HT}$ produces adaptive tokens through four stages:
 
@@ -90,6 +92,8 @@ $\partial\text{HT}$ produces adaptive tokens through four stages:
 
 ![dHT Figure 3](figures/hierarchy_standalone.png "Visual Hierarchies")
 **Figure 3**: *Detailed view of superpixel hierarchies for different images. Note that the higher levels often yield oversegmented regions, while lower levels yield undersegmented regions. By using model selection with information criteria, our model selects the most informative tokens over the full hierarchy.*
+
+---
 
 Visual tokenization is deceptively unconstrained, and there are combinatorially many ways to carve an image into connected regions, almost none of which are useful. The role of a hierarchy is to reduce the combinatorial search into a structured, manageable space.
 
@@ -110,6 +114,8 @@ We exploit this by *pretraining* the CNN encoder $f$ and the projection $W$ to r
 
 ![dHT Figure 3](figures/ras2vec_standalone.png "Raster-to-vector Graphics")
 **Figure 3**: *Raster-to-vector graphics conversion using $\partial\text{HT}$. Starting from a learned superpixel hierarchy, we trace each region into a vector path, yielding an editable SVG-like representation without any extra training or supervision.*
+
+---
 
 Beyond serving as an adaptive tokenizer, $\partial\text{HT}$ also gives a surprisingly strong raster-to-vector graphics pipeline, without additional training or fine-tuning. Once we have a hierarchical superpixel partition, each region is already a clean, connected shape with a well-defined colour and boundary. By converting these regions into vector paths, we obtain scalable vector graphics without any task-specific training.
 
