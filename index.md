@@ -121,6 +121,16 @@ Beyond serving as an adaptive tokenizer, $\partial\text{HT}$ also gives a surpri
 
 Concretely, we select an information-theoretically optimal partition, trace each superpixel boundary into a polygonal path, and export the resulting collection of regions as an SVG. Fine-scale regions capture texture and detail, while coarser regions handle large smooth areas, mirroring the hierarchy learned during tokenization. The result is a vector image that preserves semantic boundaries and local structure, remains editable in standard graphics tools, and scales to high resolutions without interpolation artefacts.
 
+### Demo
+
+<script
+	type="module"
+	src="https://gradio.s3-us-west-2.amazonaws.com/6.0.1/gradio.js"
+></script>
+
+<gradio-app src="https://mariuaas-dht-raster2vector.hf.space"></gradio-app>
+
+
 
 ## Summary
 
