@@ -12,43 +12,56 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
 
     steps:
-      - name: Checkout template
+      # --- 1. Checkout TEMPLATE ---
+      - name: Checkout project-template
         uses: actions/checkout@v4
         with:
           repository: dsb-ifi/project-template
           ref: main
           path: template
+          clean: false
+          fetch-depth: 1
 
+      # --- 2. Checkout CONTENT ---
       - name: Checkout content
         uses: actions/checkout@v4
         with:
           path: contents
+          clean: false
+          fetch-depth: 1
 
-      - name: Merge template and contents safely
+      # --- 3. Remove nested .git folders so rsync works ---
+      - name: Remove git directories before merge
         run: |
-          rsync -av template/ ./ 
+          rm -rf template/.git
+          rm -rf contents/.git
+
+      # --- 4. Merge template → root, then contents → root ---
+      - name: Merge template and contents
+        run: |
+          rsync -av template/ ./
           rsync -av contents/ ./
 
+      # --- 5. Setup Pages build ---
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # --- 6. Jekyll build ---
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
 
+      # --- 7. Upload artifact ---
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
@@ -56,8 +69,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
