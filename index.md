@@ -91,7 +91,7 @@ $\partial\text{HT}$ produces adaptive tokens through four stages:
 ![dHT Figure 3](figures/hierarchy_standalone.png "Visual Hierarchies")
 **Figure 3**: *Detailed view of superpixel hierarchies for different images. Note that the higher levels often yield oversegmented regions, while lower levels yield undersegmented regions. By using model selection with information criteria, our model selects the most informative tokens over the full hierarchy.*
 
-Visual tokenization is deceptively unconstrained, and there are immeasurable ways to carve an image into connected regions, almost none of which are useful. The role of a hierarchy is to reduce the combinatorial search into a structured, manageable space.
+Visual tokenization is deceptively unconstrained, and there are combinatorially many ways to carve an image into connected regions, almost none of which are useful. The role of a hierarchy is to reduce the combinatorial search into a structured, manageable space.
 
 A hierarchical merge process gives every image a single, monotone sequence of partitions, from pixels at the bottom to the whole image at the top. Each level is guaranteed to be a refinement of the next; a property backed formally by the connectivity–preserving edge contractions in our construction. This removes the need to search freely over $\Pi(V)$, the full lattice of partitions, and replaces it with a chain of paths.
 
@@ -118,7 +118,7 @@ Concretely, we select an information-theoretically optimal partition, trace each
 
 ## Summary
 
-In this work, we propose $\partial\text{HT}$ as a differentiable tokenizer that can be retrofitted to existing vision models. [Our paper](https://arxiv.org/abs/2511.02652) demonstrates that the resulting models produce competative results in classification, segmentation, and provides benefits like high-quality automated raster-to-vector graphics conversion. We show that models can be effectively retrofitted with $\partial\text{HT}$ tokenizers, opening the door for modular tokenization methods for more effective vision modeling. *We hope our work contributes to inspiring more work on tokenization; an often overlooked but central component of modern vision models.*
+In this work, we propose $\partial\text{HT}$ as a differentiable tokenizer that can be retrofitted to existing vision models. [Our paper](https://arxiv.org/abs/2511.02652) demonstrates that the resulting models produce competitive results in classification, segmentation, and provides benefits like high-quality automated raster-to-vector graphics conversion. We show that models can be effectively retrofitted with $\partial\text{HT}$ tokenizers, opening the door for modular tokenization methods for more effective vision modeling. *We hope our work contributes to inspiring more work on tokenization; an often overlooked but central component of modern vision models.*
 
 ### Citation
 
