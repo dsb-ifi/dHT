@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Favicon generated with: https://realfavicongenerator.net -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
+  <link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#5bbad5">
+  <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="{{ '/assets/images/browserconfig.xml' | relative_url }}">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/static/css/bulma.min.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <style>
+    /* page-specific CSS goes here */
+    .footer a:hover {
+      color: {% if page.accent %}{{ page.accent }}{% else %}black{% endif %};
+    }
+    .publication-authors a:hover {
+      color: {% if page.accent %}{{ page.accent }}{% else %}hsl(204, 86%, 53%){% endif %} !important;
+    }
+    .link-block .button:hover  {
+      background-color: {% if page.accent %}{{ page.accent }}{% else %}black{% endif %};
+    } 
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+        displayMath: [ ['$$', '$$'], ['\\[', '\\]'] ],
+        processEscapes: true, 
+        tags: 'all',
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script
+    type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">{{ page.title }}</h1>
+          {% if page.authors %}
+          <div class="is-size-5 publication-authors">
+            {% for author in page.authors %}
+              <span class="author-block">
+              {% if author.link %}<a href="{{ author.link }}">{% endif %}{{ author.name }}{% if author.link %}</a>{% endif %} {% if author.affiliation %}<sup>{{ author.affiliation }}</sup>{% endif %}
+              </span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if page.affiliations %}
+          <div class="is-size-5 publication-authors">
+            {% assign idx = 1 %}
+            {% for affiliation in page.affiliations %}
+              <span class="affiliations-block">
+                <sup>{{ idx }}</sup> {% if affiliation.link %}<a href="{{ affiliation.link }}">{% endif %}{{ affiliation.name }}{% if affiliation.link %}</a>{% endif %}
+              </span>
+              {% assign idx = idx | plus: 1 %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              {% if page.paper %}
+              <span class="link-block">
+                <a href="{{ page.paper }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              {% endif %}
+              <!-- Video Link. -->
+              {% if page.video %}
+              <span class="link-block">
+                <a href="{{ page.video }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              {% endif %}
+              <!-- Code Link. -->
+              {% if page.code %}
+              <span class="link-block">
+                <a href="{{ page.code | liquify }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              {% endif %}
+              <!-- Dataset Link. -->
+              {% if page.data %}
+              <span class="link-block">
+                <a href="{{ page.data }}"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+<div class="container is-max-desktop">
+
+<div class="content">
+  {% if page.abstract %}
+  <!-- Using HTML to center the abstract -->
+  <hr>
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+        <h2>Abstract</h2>
+        <div class="content has-text-justified">
+        {{ page.abstract }}
+        </div>
+    </div>
+  </div>
+  <hr>
+  {% endif %}
+
+  {{ content }}
+</div>
+
+</div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Powered by an <a class="updated" href="https://github.com/dsb-ifi/project-template">updated</a> <a href="https://github.com/shunzh/project_website">jekyllized</a> version of <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> style. <a id="smiley"></a> 
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

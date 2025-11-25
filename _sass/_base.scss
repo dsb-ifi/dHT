@@ -1,0 +1,24 @@
+/* 
+  BASE ELEMENTS
+ */
+
+@use "variables" as vars;
+
+/* links */
+
+a {
+  text-decoration: none;
+  color: vars.$link-color;
+ 
+  &:hover,
+  &:active {
+    outline: 0;
+    color: vars.$link-color-hover;
+  }
+}
+
+/* code */
+
+pre.code {
+  font-size: vars.$type-size-10;
+}

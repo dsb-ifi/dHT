@@ -1,0 +1,41 @@
+@use "variables" as vars;
+
+.footer {
+  font-size: vars.$type-size-6;
+  color: vars.$gray;
+  
+  #smiley {
+    font-weight: bold;
+    width: 20px;
+    
+    display: inline-block;
+    // put a zero width blank space to make the div appear
+    &:before{
+      content: "\200B";
+    }
+  }
+}
+.content a.updated:hover ~ #smiley{
+  content: "^^,";
+  // color: blue;
+  &:after{
+    content: "^^,";
+  }
+
+  &:before{
+    display: none;
+  }
+}
+
+.footer a {
+  font-size: vars.$type-size-5;
+  color: vars.$gray;
+  &:hover {
+    color: vars.$highlight-color;
+  }
+}
+
+.footer .icon-link {
+    font-size: vars.$type-size-5;
+    color: vars.$gray;
+}
