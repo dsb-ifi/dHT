@@ -13,7 +13,8 @@
 [![Website](https://img.shields.io/badge/Website-green)](https://dsb-ifi.github.io/dHT/)
 [![PaperArxiv](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2511.02652)
 [![PaperNeurIPS](https://img.shields.io/badge/Paper-NeurIPS_2025-blue)](https://openreview.net/forum?id=y8VWYf5cVI)
-[![SpotlightNeurIPS](https://img.shields.io/badge/Spotlight-NeurIPS_2025-cyan)](https://neurips.cc/virtual/2025/poster/115180)<br>
+[![SpotlightNeurIPS](https://img.shields.io/badge/Spotlight-NeurIPS_2025-cyan)](https://neurips.cc/virtual/2025/poster/115180)
+[![NotebookR2V](https://img.shields.io/badge/Notebook-R2V-orange)](https://nbviewer.jupyter.org/github/dsb-ifi/dHT/blob/main/demo_raster2svg.ipynb)<br>
 
 ![dHT Figure 1](/assets/dht_teaser_transparent.png#gh-light-mode-only "Examples of feature trajectoreis with SPoT-ON")
 ![dHT Figure 1](/assets/dht_teaser_transparent_dark.png#gh-dark-mode-only "Examples of feature trajectoreis with SPoT-ON")
@@ -27,7 +28,7 @@ Vision Transformers rely on fixed patch tokens that ignore the spatial and seman
 
 ## $\partial\text{HT}$: Differentiable Hierarchical Visual Tokenization
 
-This repo contains code for **Differentiable Hierarchical Visual Tokenization**, accepted for NeurIPS 2025.
+This repo contains code for **Differentiable Hierarchical Visual Tokenization**, accepted as a spotlight paper for NeurIPS 2025.
 
 For an introduction to our work, visit the [project webpage](https://dsb-ifi.github.io/dHT/). 
 
@@ -73,5 +74,6 @@ If you find our work useful, please consider citing our paper.
 }
 ```
 
+---
 
 🚧 **NOTE:** The `hubconf.py` is still under construction, and will be updated with classification models soon.
