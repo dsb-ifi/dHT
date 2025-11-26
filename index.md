@@ -123,6 +123,8 @@ Concretely, we select an information-theoretically optimal partition, trace each
 
 ### Demo
 
+To showcase the raster-to-vector conversion capability of $\partial\text{HT}$, we include a small demo below, hosted on Huggingface Spaces. 
+
 <script
 	type="module"
 	src="https://gradio.s3-us-west-2.amazonaws.com/6.0.1/gradio.js"
@@ -130,6 +132,7 @@ Concretely, we select an information-theoretically optimal partition, trace each
 
 <gradio-app src="https://mariuaas-dht-raster2vector.hf.space"></gradio-app>
 
+*We note that our demo replaces [Potrace](https://potrace.sourceforge.net/) with our own vectorization module. This is faster, but slightly less optimized.* 
 
 
 ## Summary
