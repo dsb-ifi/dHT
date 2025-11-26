@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dht"
+version = "0.1.0"
+description = "Differentiable Hierarchical Visual Tokenization"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Marius Aasan", email = "mariuaas@ifi.uio.no"},
+]
+keywords = ["deep learning", "vision transformer", "tokenization", "image processing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "torch>=2.7.0",
+    "torchvision>=0.22.0",
+    "numpy>=2.2.0",
+    "pillow>=12.0.0",
+]
+
+[project.urls]
+Homepage = "https://dsb-ifi.github.io/dHT/"
+Repository = "https://github.com/dsb-ifi/dHT"
+Paper = "https://arxiv.org/abs/2511.02652"
+"Bug Tracker" = "https://github.com/dsb-ifi/dHT/issues"
+
+[tool.setuptools]
+packages = ["dht"]
+
+[tool.setuptools.package-data]
+dht = ["../assets/r2v/*.pth"]

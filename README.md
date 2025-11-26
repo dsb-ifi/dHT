@@ -27,9 +27,7 @@ Vision Transformers rely on fixed patch tokens that ignore the spatial and seman
 
 ## $\partial\text{HT}$: Differentiable Hierarchical Visual Tokenization
 
-**🚧 NOTE: The repo is still under construction, but will be finalized soon. 🚧***
-
-This repo contains code and weights for **Differentiable Hierarchical Visual Tokenization**, accepted for NeurIPS 2025.
+This repo contains code for **Differentiable Hierarchical Visual Tokenization**, accepted for NeurIPS 2025.
 
 For an introduction to our work, visit the [project webpage](https://dsb-ifi.github.io/dHT/). 
 
@@ -50,16 +48,16 @@ pip install git+ssh://git@github.com/dsb-ifi/dHT.git
 You can load the Superpixel Transformer models easily via `torch.hub`:
 
 ```python
+# Example with raster-to-vector model
 model = torch.hub.load(
     'dsb-ifi/dht', 
-    'dht_vit_base_16_in1k',
+    'dht_ras2vec',
     pretrained=True,
     source='github',
 )
 ```
 
 This will load the model and downloaded the pretrained weights, stored in your local `torch.hub` directory. 
-
 
 ## Citation
 
@@ -74,3 +72,6 @@ If you find our work useful, please consider citing our paper.
   url={https://openreview.net/forum?id=y8VWYf5cVI}
 }
 ```
+
+
+🚧 **NOTE:** The `hubconf.py` is still under construction, and will be updated with classification models soon.
